@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PyScript Print Demo</title>
+
+    <!-- PyScript CSS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+
+    <!-- PyScript JS -->
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+</head>
+<body>
+
+    <h2>Python print() Function Demo</h2>
+
+    <!-- Python code inside HTML -->
+    <script type="mpy" terminal>
+print("Hello World")
+
+print("Hello", "World", sep=" - ")
+
+
+print("This line will not end here", end=" ---> ")
+print("See? Same line!")
+
+print("Flushed output example", flush=True)
+    </script>
+
+</body>
+</html>
+
+
+
+
+<style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+        }
+        .container {
+            width: 400px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 6px;
+        }
+        input.ng-invalid.ng-touched {
+            border: 2px solid red;
+        }
+        input.ng-valid.ng-touched {
+            border: 2px solid green;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>

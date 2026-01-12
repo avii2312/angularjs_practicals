@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Form Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    
+</head>
+
+<body ng-controller="formCtrl">
+
+<div class="container">
+    <h2>Student Registration Form</h2>
+
+    <form name="myForm" ng-submit="submitForm()" novalidate>
+
+        <!-- Name -->
+        <label>Name</label>
+        <input type="text" name="name" ng-model="student.name" required>
+        <span class="error" ng-show="myForm.name.$touched && myForm.name.$invalid">
+            Name is required
+        </span>
+
+        <br><br>
+
+        <!-- Email -->
+        <label>Email</label>
+        <input type="email" name="email" ng-model="student.email" required>
+        <span class="error" ng-show="myForm.email.$touched && myForm.email.$invalid">
+            Enter valid email
+        </span>
+
+        <br><br>
+
+        <!-- Password -->
+        <label>Password</label>
+        <input type="password" name="password" ng-model="student.password"
+               ng-minlength="6" required>
+        <span class="error" ng-show="myForm.password.$touched && myForm.password.$invalid">
+            Minimum 6 characters required
+        </span>
+
+        <br><br>
+
+        <!-- Gender -->
+        <label>Gender</label><br>
+        <input type="radio" ng-model="student.gender" value="Male" required> Male
+        <input type="radio" ng-model="student.gender" value="Female"> Female
+
+        <br><br>
+
+        <!-- Course -->
+        <label>Course</label>
+        <select ng-model="student.course" required>
+            <option value="">Select Course</option>
+            <option>Computer Engineering</option>
+            <option>Information Technology</option>
+            <option>Electronics</option>
+        </select>
+
+        <br><br>
+
+        <!-- Submit -->
+        <button type="submit" ng-disabled="myForm.$invalid">
+            Submit
+        </button>
+
+    </form>
+</div>
+<br>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("formCtrl", function($scope) {
+        $scope.submitForm = function() {
+            alert("Form Submitted Successfully!");
+        };
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practical 3 - JSON Object</title>
+</head>
+<body>
+
+<h2>Student Information Using JSON</h2>
+
+<p id="output"></p>
+
+<script>
+    // Creating JSON object
+    const student = {
+        "name": "Rahul Patil",
+        "rollNo": 23,
+        "branch": "Computer Engineering",
+        "isRegular": true,
+        "subjects": ["CSS", "JavaScript", "Python"],
+        "address": {
+            "city": "Pune",
+            "state": "Maharashtra"
+        }
+    };
+
+
+    // Accessing JSON object values
+    const output = document.getElementById("output");
+    if (output) {
+        output.innerHTML =
+            "Name: " + student.name + "<br>" +
+            "Roll No: " + student.rollNo + "<br>" +
+            "Branch: " + student.branch + "<br>" +
+            "City: " + student.address.city + "<br>" +
+            "Subjects: " + student.subjects.join(", ");
+    }
+</script>
+
+</body>
+</html>

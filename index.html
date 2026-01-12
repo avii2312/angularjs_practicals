@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AngularJS Form</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<style>.error{color:red;}</style>
+</head>
+<body ng-app="myApp" ng-controller="formCtrl">
+<h2>Student Registration Form</h2>
+<form name="studentForm" ng-submit="submitForm()" novalidate>
+Name:
+<input type="text" name="name" ng-model="student.name" required>
+<span class="error" ng-show="studentForm.name.$touched && studentForm.name.$invalid">
+Required
+</span><br><br>
+Email:
+<input type="email" name="email" ng-model="student.email" required>
+<span class="error" ng-show="studentForm.email.$touched && studentForm.email.$invalid">
+Invalid Email
+</span><br><br>
+Password:
+<input type="password" name="password" ng-model="student.password" required minlength="6">
+<span class="error" ng-show="studentForm.password.$touched && studentForm.password.$invalid">
+Min 6 characters
+</span><br><br>
+Gender:
+<input type="radio" ng-model="student.gender" value="Male">Male
+<input type="radio" ng-model="student.gender" value="Female">Female<br><br>
+Course:
+<select ng-model="student.course" required>
+<option value="">Select</option>
+<option>Computer</option>
+<option>IT</option>
+<option>Mechanical</option>
+</select><br><br>
+<input type="checkbox" ng-model="student.agree"> I Agree<br><br>
+<button type="submit" ng-disabled="studentForm.$invalid">Submit</button>
+</form>
+<script>
+var app = angular.module("myApp", []);
+app.controller("formCtrl", function($scope){
+$scope.submitForm = function(){
+alert("Form Submitted Successfully");
+};
+});
+</script>
+</body>
+</html>
