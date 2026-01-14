@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>One-Way Data Binding - Interpolation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="MainController">
+    <h1>Welcome to AngularJS</h1>
+    
+    <!-- One-way binding using interpolation -->
+    <p>Hello, {{ name }}!</p>
+    <p>Course: {{ course }}</p>
+    <p>Duration: {{ duration }} months</p>
+    
+    <!-- Expression evaluation -->
+    <p>Total Hours: {{ duration * 4 * 25 }} hours</p>
+    
+    <script>
+        var app = angular.module('myApp', []);
+        
+        app.controller('MainController', function($scope) {
+            // Model data
+            $scope.name = 'Student';
+            $scope.course = 'Client Side Scripting';
+            $scope.duration = 6;
+        });
+    </script>
+</body>
+</html>
