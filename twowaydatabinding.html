@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>One-Way and Two-Way Data Binding</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="MainController">
+
+    <h2>AngularJS Data Binding Demo</h2>
+
+    <!-- TWO-WAY DATA BINDING -->
+    <h3>Two-Way Data Binding</h3>
+    <input type="text" ng-model="studentName">
+    <p>Student Name: {{ studentName }}</p>
+    <br>
+    <input type="number" ng-model="studentage">
+    
+
+    <hr>
+
+    <!-- ONE-WAY DATA BINDING -->
+    <h3>One-Way Data Binding</h3>
+    <p ng-bind="schoolname"></p>
+    <p ng-bind="course"></p>
+
+    <button ng-click="changeschool()">Change School Name</button>
+
+</body>
+
+<script>
+    var app = angular.module("myApp", []);
+
+    app.controller("MainController", function($scope) {
+        $scope.studentName = "Salman Khan";
+        $scope.schoolname = "footpath driving school";
+
+        $scope.changeschool = function() {
+            $scope.changeschool = "XYZ Institute of Technology";
+        };
+    });
+</script>
+
+</html>
