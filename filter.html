@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>AngularJS Filters Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="MainController">
+
+    <h2>AngularJS Filters Example</h2>
+
+    <!-- Text Filters -->
+    <h3>Text Filters</h3>
+    <p>Original Text: {{ message }}</p>
+    <p>Uppercase: {{ message | uppercase }}</p>
+    <p>Lowercase: {{ message | lowercase }}</p>
+
+    <hr>
+
+    <!-- Currency Filter -->
+    <h3>Currency Filter</h3>
+    <p>Fees: {{ fees | currency:'₹' }}</p>
+
+    <hr>
+
+    <!-- Filter and OrderBy -->
+    <h3>Student List</h3>
+
+    <input type="text" ng-model="searchText" placeholder="Search student">
+
+    <ul>
+        <li ng-repeat="student in students | filter:searchText | orderBy:'name'">
+            {{ student.name }} - {{ student.age }}
+        </li>
+    </ul>
+
+</body>
+
+<script>
+    var app = angular.module("myApp", []);
+
+    app.controller("MainController", function($scope) {
+
+        $scope.message = "AngularJS Filters Demo";
+        $scope.fees = 25000;
+
+        $scope.students = [
+            { name: "Salman", age: 21 },
+            { name: "Aamir", age: 22 },
+            { name: "Shahrukh", age: 23 },
+            { name: "Akshay", age: 24 }
+        ];
+
+    });
+</script>
+
+</html>
+
