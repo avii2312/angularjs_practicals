@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html ng-app="eventApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Events Practical</title>
+
+    <!-- AngularJS CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        .box {
+            width: 300px;
+            height: 150px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 150px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body ng-controller="eventController">
+
+    <h2>AngularJS Event Handling Demo</h2>
+
+    <!-- Button Click Event -->
+    <button ng-click="changeColor()"
+            ng-style="{'background-color': btnColor}">
+        Click Me
+    </button>
+
+    <br><br>
+
+    <!-- Key Events -->
+    <input type="text"
+           placeholder="Press any key"
+           ng-keydown="keyDown()"
+           ng-keypress="keyPress()"
+           ng-keyup="keyUp()">
+
+    <p>Key Down Count: {{keydownCount}}</p>
+    <p>Key Press Count: {{keypressCount}}</p>
+    <p>Key Up Count: {{keyupCount}}</p>
+
+    <!-- Mouse Events -->
+    <div class="box"
+         ng-mousedown="showCoords($event)"
+         ng-mousemove="showCoords($event)"
+         ng-mouseenter="mouseStatus='Mouse Entered'"
+         ng-mouseleave="mouseStatus='Mouse Left'">
+        Mouse Event Area
+    </div>
+
+    <p>{{mouseStatus}}</p>
+    <p>X Coordinate: {{x}}</p>
+    <p>Y Coordinate: {{y}}</p>
+
+<script>
+    var app = angular.module("eventApp", []);
+
+    app.controller("eventController", function($scope) {
+
+        // Button color change
+        $scope.btnColor = "lightblue";
+        $scope.changeColor = function() {
+            $scope.btnColor = ($scope.btnColor === "lightblue") ? "orange" : "lightblue";
+        };
+
+        // Key counters
+        $scope.keydownCount = 0;
+        $scope.keypressCount = 0;
+        $scope.keyupCount = 0;
+
+        $scope.keyDown = function() {
+            $scope.keydownCount++;
+        };
+
+        $scope.keyPress = function() {
+            $scope.keypressCount++;
+        };
+
+        $scope.keyUp = function() {
+            $scope.keyupCount++;
+        };
+
+        // Mouse coordinates
+        $scope.showCoords = function(event) {
+            $scope.x = event.clientX;
+            $scope.y = event.clientY;
+        };
+
+        $scope.mouseStatus = "";
+    });
+</script>
+
+</body>
+</html>
+----------------------------------!!!------------------------------
+//Change the Button Color After Clicking It
+<!DOCTYPE html>
+<html ng-app="colorApp">
+<head>
+    <title>Button Color Change</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="colorController">
+
+    <h2>Change Button Color</h2>
+
+    <button ng-click="changeColor()"
+            ng-style="{'background-color': btnColor}">
+        Click Me
+    </button>
+
+<script>
+    var app = angular.module("colorApp", []);
+
+    app.controller("colorController", function($scope) {
+        $scope.btnColor = "lightblue";
+
+        $scope.changeColor = function() {
+            if ($scope.btnColor === "lightblue") {
+                $scope.btnColor = "green";
+            } else {
+                $scope.btnColor = "lightblue";
+            }
+        };
+    });
+</script>
+
+</body>
+</html>
+------------------------------------------------------------------------
+//Show Count of Key Press in Text Box
+<!DOCTYPE html>
+<html ng-app="keyApp">
+<head>
+    <title>Key Press Counter</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body ng-controller="keyController">
+
+    <h2>Key Press Counter</h2>
+
+    <input type="text"
+           placeholder="Type something"
+           ng-keypress="countKey()">
+
+    <p>Total Key Press Count: {{count}}</p>
+
+<script>
+    var app = angular.module("keyApp", []);
+
+    app.controller("keyController", function($scope) {
+        $scope.count = 0;
+
+        $scope.countKey = function() {
+            $scope.count++;
+        };
+    });
+</script>
+
+</body>
+</html>
+----------------------------------------------------------------
+//Display X and Y Coordinates in Mouse Events
+<!DOCTYPE html>
+<html ng-app="mouseApp">
+<head>
+    <title>Mouse Coordinates</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .box {
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+            margin-top: 20px;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+
+<body ng-controller="mouseController">
+
+    <h2>Mouse Event Coordinates</h2>
+
+    <div class="box"
+         ng-mousedown="getCoords($event)"
+         ng-mousemove="getCoords($event)">
+        Move or Click Mouse Here
+    </div>
+
+    <p>X Coordinate: {{x}}</p>
+    <p>Y Coordinate: {{y}}</p>
+
+<script>
+    var app = angular.module("mouseApp", []);
+
+    app.controller("mouseController", function($scope) {
+
+        $scope.getCoords = function(event) {
+            $scope.x = event.clientX;
+            $scope.y = event.clientY;
+        };
+    });
+</script>
+
+</body>
+</html>
