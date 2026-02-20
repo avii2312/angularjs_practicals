@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Student Table</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 60%;
+            margin: 40px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body ng-controller="myController">
+
+<h2>Student Information Table</h2>
+
+<table>
+    <tr>
+        <th>Sr. No</th>
+        <th>Name</th>
+        <th>Branch</th>
+        <th>Marks</th>
+    </tr>
+
+    <tr ng-repeat="student in students">
+        <td>{{$index + 1}}</td>
+        <td>{{student.name}}</td>
+        <td>{{student.branch}}</td>
+        <td>{{student.marks}}</td>
+    </tr>
+</table>
+
+<script>
+    var app = angular.module("myApp", []);
+
+    app.controller("myController", function($scope) {
+        $scope.students = [
+            {name: "Rahul", branch: "Computer", marks: 85},
+            {name: "Sneha", branch: "IT", marks: 90},
+            {name: "Amit", branch: "Mechanical", marks: 75},
+            {name: "Priya", branch: "Civil", marks: 88},
+            {name: "Rohan", branch: "Electrical", marks: 80},
+            {name: "Neha", branch: "Computer", marks: 92},
+            {name: "Karan", branch: "IT", marks: 78},
+            {name: "Pooja", branch: "Civil", marks: 84},
+            {name: "Vikas", branch: "Mechanical", marks: 70},
+            {name: "Anjali", branch: "Electrical", marks: 89}
+        ];
+    });
+</script>
+
+</body>
+</html>
