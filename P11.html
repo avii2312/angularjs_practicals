@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+    <title>AngularJS Table - Odd Even Styling</title>
+
+    <!-- AngularJS CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        /* CSS for odd rows */
+        .odd-row {
+            background-color: #f2f2f2;
+        }
+
+        /* CSS for even rows */
+        .even-row {
+            background-color: #d1f0d1;
+        }
+    </style>
+</head>
+
+<body ng-controller="studentController">
+
+    <h2 align="center">Student Data Table</h2>
+
+    <table>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+
+        <tr ng-repeat="student in students"
+            ng-class-odd="'odd-row'"
+            ng-class-even="'even-row'">
+
+            <td>{{student.roll}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.city}}</td>
+        </tr>
+    </table>
+
+<script>
+    var app = angular.module("studentApp", []);
+
+    app.controller("studentController", function($scope) {
+        $scope.students = [
+            {roll: 1, name: "Amit", city: "Pune"},
+            {roll: 2, name: "Riya", city: "Mumbai"},
+            {roll: 3, name: "Karan", city: "Nashik"},
+            {roll: 4, name: "Sneha", city: "Nagpur"},
+            {roll: 5, name: "Rahul", city: "Solapur"},
+            {roll: 6, name: "Priya", city: "Kolhapur"},
+            {roll: 7, name: "Vikas", city: "Satara"},
+            {roll: 8, name: "Neha", city: "Aurangabad"},
+            {roll: 9, name: "Arjun", city: "Thane"},
+            {roll: 10, name: "Pooja", city: "Sangli"}
+        ];
+    });
+</script>
+
+</body>
+</html>
