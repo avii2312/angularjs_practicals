@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="nestedApp">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-controller="ParentCtrl">
+    <h2>Parent Data: {{parentMessage}}</h2>
+
+    <div ng-controller="ChildCtrl">
+        <h3>Child Data: {{childMessage}}</h3>
+        <p>Access Parent Data: {{parentMessage}}</p>
+    </div>
+</div>
+
+<script>
+var app = angular.module("nestedApp", []);
+
+app.controller("ParentCtrl", function($scope){
+    $scope.parentMessage = "This is Parent Controller";
+});
+
+app.controller("ChildCtrl", function($scope){
+    $scope.childMessage = "This is Child Controller";
+});
+</script>
+
+</body>
+</html>
